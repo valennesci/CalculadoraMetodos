@@ -121,7 +121,9 @@ def render():
             col_tabla, col_grafico = st.columns([1, 2])
             with col_tabla:
                 st.write("**Tabla de Valores (Xn, Yn)**")
-                st.dataframe(pd.DataFrame(tabla_datos))
+                df = pd.DataFrame(tabla_datos)
+                format_dict = {col: "{:.12f}" for col in df.select_dtypes(include=['float', 'float64']).columns}
+                st.dataframe(df.style.format(format_dict))
 
             with col_grafico:
                 st.write("**Área bajo la curva**")

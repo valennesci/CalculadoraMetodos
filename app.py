@@ -1,4 +1,7 @@
 # Comando para ejecutar la app: python -m streamlit run app.py
+#cd CalculadoraMetodos
+#python -m streamlit run app.py
+
 import streamlit as st
 
 # Configuración básica de la página
