@@ -115,7 +115,17 @@ def render():
                 st.subheader("📊 Análisis Estadístico (Valor Medio)")
                 st.metric("Integral Estimada (Î)", f"{integral_vm:.8f}")
                 
-                st.write("**Análisis de Desviación (S):**")
+                media_muestral = np.mean(evaluaciones)
+                varianza_simple = np.var(evaluaciones, ddof=1)
+                varianza_escalada = np.var(g_eval, ddof=1)
+                
+                st.write(f"**Media Muestral:** `{media_muestral:.6f}`")
+                
+                st.write("**Análisis de Varianza (S²):**")
+                st.write(f"• $S^2$ Simple (solo f): `{varianza_simple:.6f}`")
+                st.write(f"• $S^2$ Escalada (con Dominio): `{varianza_escalada:.6f}`")
+                
+                st.write("**Análisis de Desviación Estándar (S):**")
                 st.write(f"• $S$ Simple (solo f): `{s_simple:.6f}`")
                 st.write(f"• $S$ Escalada (con Dominio): `{s_escalada:.6f}` *(La del pizarrón)*")
                 
