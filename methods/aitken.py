@@ -53,7 +53,9 @@ def render():
             
             if len(tabla_datos) > 0:
                 st.subheader("📊 Tabla de Iteraciones")
-                st.dataframe(pd.DataFrame(tabla_datos))
+                df = pd.DataFrame(tabla_datos)
+                format_dict = {col: "{:.12f}" for col in df.select_dtypes(include=['float', 'float64']).columns}
+                st.dataframe(df.style.format(format_dict))
                 
                 st.subheader("📈 Gráfica")
                 fig, ax = plt.subplots(figsize=(8, 4))

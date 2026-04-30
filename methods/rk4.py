@@ -72,7 +72,8 @@ def render():
             st.success(f"✅ **Valor final calculado:** $y({x_act:.4f}) \approx {y_act:.6f}$")
             
             st.subheader("📊 Tabla de Iteraciones (RK4)")
-            st.dataframe(df_resultados)
+            format_dict = {col: "{:.12f}" for col in df_resultados.select_dtypes(include=['float', 'float64']).columns}
+            st.dataframe(df_resultados.style.format(format_dict))
             
             st.subheader("📈 Gráfica de la Solución")
             fig, ax = plt.subplots(figsize=(8, 4))
