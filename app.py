@@ -19,6 +19,7 @@ modulo = st.sidebar.selectbox(
         "Interpolación (Lagrange)",
         "Integración Numérica",
         "Monte Carlo (Integración)",
+        "Calculadora Analítica",
         "Método de Euler",
         "Runge-Kutta 4 (RK4)"
     ]
@@ -51,3 +52,6 @@ elif modulo == "Método de Euler":
 elif modulo == "Runge-Kutta 4 (RK4)":
     import methods.rk4 as rk4
     rk4.render()
+elif modulo == "Calculadora Analítica":
+    import methods.analitica as analitica
+    analitica.render()
