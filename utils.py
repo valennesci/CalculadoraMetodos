@@ -19,6 +19,18 @@ def mostrar_calculadora(key_prefix, label, default_func=""):
         st.session_state[input_key] = ""
 
     func_str = st.text_input(label, key=input_key)
+    
+    if func_str:
+        try:
+            expr = sp.sympify(func_str)
+            symbols = list(expr.free_symbols)
+            symbols_str = ", ".join(sorted([str(s) for s in symbols]))
+            if symbols_str:
+                st.latex(rf"f({symbols_str}) = {sp.latex(expr)}")
+            else:
+                st.latex(rf"f(x) = {sp.latex(expr)}")
+        except Exception:
+            pass
 
     with st.expander("⌨️ Abrir Teclado Matemático"):
         c1, c2, c3, c4, c5 = st.columns(5)
